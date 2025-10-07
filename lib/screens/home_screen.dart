@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/theme_provider.dart';
+import '../widgets/custom_elevated_button.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -21,27 +22,26 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: ElevatedButton(
-                onPressed: () {
-                  final themeProvider = context.read<ThemeProvider>();
+            CustomElevatedButton(
+              text: "Dark Theme",
+              onPressed: () {
+                final themeProvider = context.read<ThemeProvider>();
 
-                  themeProvider.setTheme(
-                     AppTheme.light
-                  );
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(  "Dark Theme"
-                    ),
-                    Icon(Icons.color_lens_rounded),
-                  ],
-                ),
-              ),
+                themeProvider.setTheme(AppTheme.dark);
+              },
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Divider(),
+            ),
+            CustomElevatedButton(
+              text: "Light Theme",
+              onPressed: () {
+                final themeProvider = context.read<ThemeProvider>();
 
+                themeProvider.setTheme(AppTheme.light);
+              },
+            ),
           ],
         ),
       ),

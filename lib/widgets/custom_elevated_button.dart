@@ -16,17 +16,6 @@ class CustomElevatedButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: ElevatedButton(
         onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          minimumSize: const Size(double.infinity, 50), // full width
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          textStyle: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
