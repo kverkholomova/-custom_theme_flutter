@@ -15,8 +15,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    final themeProvider = context.read<ThemeProvider>();
-
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
       body: Center(
@@ -27,25 +25,23 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: ElevatedButton(
                 onPressed: () {
+                  final themeProvider = context.read<ThemeProvider>();
+
                   themeProvider.setTheme(
-                    themeProvider.themeData.brightness == Brightness.dark
-                        ? AppTheme.light
-                        : AppTheme.dark,
+                     AppTheme.light
                   );
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      themeProvider.themeData.brightness == Brightness.dark
-                          ? "Light Theme"
-                          : "Dark Theme",
+                    Text(  "Dark Theme"
                     ),
                     Icon(Icons.color_lens_rounded),
                   ],
                 ),
               ),
             ),
+
           ],
         ),
       ),
