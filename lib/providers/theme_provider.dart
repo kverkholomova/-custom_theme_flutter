@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../theme/dark_theme.dart';
+import '../theme/light_theme.dart';
+
 enum AppTheme {
   light,
   dark,
