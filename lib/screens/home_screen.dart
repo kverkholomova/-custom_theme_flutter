@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,34 +13,42 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
+    final themeProvider = context.read<ThemeProvider>();
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(title: Text(widget.title)),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('Your current theme is:'),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: ElevatedButton(
+                onPressed: () {
+                  themeProvider.setTheme(
+                    themeProvider.themeData.brightness == Brightness.dark
+                        ? AppTheme.light
+                        : AppTheme.dark,
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      themeProvider.themeData.brightness == Brightness.dark
+                          ? "Light Theme"
+                          : "Dark Theme",
+                    ),
+                    Icon(Icons.color_lens_rounded),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-
-          final themeProvider = context.read<ThemeProvider>();
-          themeProvider.setTheme(
-            themeProvider.themeData
-                .brightness == Brightness.dark
-                ? AppTheme.light
-                : AppTheme.dark,
-          );
-        },
-        child: const Icon(Icons.color_lens_rounded),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

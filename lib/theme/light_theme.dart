@@ -1,12 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final ThemeData lightTheme = ThemeData(
+  textTheme: GoogleFonts.montserratTextTheme().apply(
+    bodyColor: Color.fromRGBO(38, 41, 51, 1.0),
+    displayColor: Color.fromRGBO(38, 41, 51, 1.0),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: Colors.white, // button color
+      foregroundColor: Color.fromRGBO(74, 62, 107, 1.0), // text/icon color
+      minimumSize: Size(double.infinity, 50), // button size
+      textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+      padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    ),
+  ),
   brightness: Brightness.light,
-  scaffoldBackgroundColor: Colors.deepPurpleAccent[50],
+  scaffoldBackgroundColor: Color.fromRGBO(177, 162, 196, 1.0),
   appBarTheme: AppBarThemeData(
-    backgroundColor: Colors.deepPurpleAccent[50],
-    titleTextStyle: TextStyle(
-      color: Colors.deepPurpleAccent[400],
-    )
+    backgroundColor: Color.fromRGBO(177, 162, 196, 1.0),
+    titleTextStyle: GoogleFonts.montserrat(
+      fontSize: 30,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
   ),
 );
