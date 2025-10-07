@@ -1,5 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/theme_provider.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -16,7 +19,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
       body: Center(
@@ -30,6 +32,13 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: (){
 
+          final themeProvider = context.read<ThemeProvider>();
+          themeProvider.setTheme(
+            themeProvider.themeData
+                .brightness == Brightness.dark
+                ? AppTheme.light
+                : AppTheme.dark,
+          );
         },
         child: const Icon(Icons.color_lens_rounded),
       ), // This trailing comma makes auto-formatting nicer for build methods.
